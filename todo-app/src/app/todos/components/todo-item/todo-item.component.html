@@ -1,9 +1,9 @@
 <div class="todo-box">
 	<div class="todo-box__item">
-		<mat-checkbox color="primary">Todo itself</mat-checkbox>
+		<mat-checkbox (change)="toggle()" [checked]="isDone" color="primary">{{value}}</mat-checkbox>
 	</div>
 	<div class="todo-box__actions">
-		<button mat-icon-button color="warn">
+		<button (click)="remove()" mat-icon-button color="warn">
 			<mat-icon>delete</mat-icon>
 		</button>
 	</div>

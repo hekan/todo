@@ -1,18 +1,9 @@
 <div class="todos-list">
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
-	<t-todo-item></t-todo-item>
+	<t-todo-item
+		*ngFor="let todo of todos"
+		[id]="todo.id"
+		[isDone]="todo.isDone"
+		[value]="todo.value"
+	></t-todo-item>
 
 </div>
