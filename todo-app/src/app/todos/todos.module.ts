@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {FormsModule} from '@angular/forms';
 		MatButtonModule,
 		MatInputModule,
 		MatIconModule,
-		FormsModule
+		FormsModule,
+		MatCheckboxModule
 	],
 	exports: [TodosContainerComponent]
 })

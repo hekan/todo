@@ -1,6 +1,10 @@
 .todos-container {
-	max-width: 900px;
+	max-width: 600px;
 	margin: 0 auto;
 	width: 96%;
+}
+
+.todos-container__card {
 	max-height: 90vh;
+	overflow-y: hidden;
 }

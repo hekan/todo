@@ -1,0 +1,14 @@
+.new-todo {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.new-todo__submit {
+	margin-left: 1rem;
+	max-width: 20%;
+}
+
+.new-todo__input {
+	width: 75%;
+}
