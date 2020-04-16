@@ -9,8 +9,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {StoreModule} from '@ngrx/store';
+import {reducer} from './store/todos.reducers';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 		MatInputModule,
 		MatIconModule,
 		FormsModule,
-		MatCheckboxModule
+		MatCheckboxModule,
+		ReactiveFormsModule,
 	],
 	exports: [TodosContainerComponent]
 })

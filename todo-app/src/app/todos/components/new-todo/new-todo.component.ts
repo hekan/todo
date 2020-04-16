@@ -1,4 +1,8 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewChild} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {add} from '../../store/todos.actions';
+import {generateNewTodo} from '../../todos.utils';
+import {TodoModel} from '../../todo.model';
 
 @Component({
 	selector: 't-new-todo',
@@ -7,24 +11,28 @@ import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewTodoComponent implements OnInit {
-
-	constructor() {
+	newTodo: string;
+	constructor(private store: Store) {
+		this.clear();
 	}
 
 	get isValid(): boolean {
-		// TODO: do validation of the input
-		return true;
+		const parsed = this.newTodo.trim();
+		return !!parsed;
 	}
 
 	ngOnInit(): void {
 	}
 
 	add() {
-		// TODO: add todo
+		if (this.isValid) {
+			this.store.dispatch(add({todo: generateNewTodo(this.newTodo) } ));
+			this.clear();
+		}
 	}
 
 	clear() {
-		// TODO: reset input field
+		this.newTodo = '';
 	}
 
 }

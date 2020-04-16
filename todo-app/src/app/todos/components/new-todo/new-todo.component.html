@@ -1,9 +1,9 @@
 <form class="new-todo">
 	<mat-form-field class="new-todo__input"  appearance="outline">
 		<mat-label>New todo</mat-label>
-		<input matInput>
+		<input (keydown.enter)="add()" [(ngModel)]="newTodo" name="newTodo" matInput>
 	</mat-form-field>
-	<button (click)="add()" class="new-todo__submit" mat-fab color="primary">
+	<button [disabled]="!isValid" (click)="add()" class="new-todo__submit" mat-fab color="primary">
 		<mat-icon>add</mat-icon>
 	</button>
 </form>

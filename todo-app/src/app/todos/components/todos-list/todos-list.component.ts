@@ -1,5 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {TodoModel} from '../../todo.model';
+import {Observable} from 'rxjs';
+import {select, Store} from '@ngrx/store';
 
 @Component({
 	selector: 't-todos-list',
@@ -8,21 +10,13 @@ import {TodoModel} from '../../todo.model';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodosListComponent implements OnInit {
-	todos: TodoModel [] = [];
+	todos$: Observable<TodoModel []>;
 
-	constructor() {
+	constructor(private store: Store<{ todos: TodoModel [] }>) {
+		this.todos$ = store.pipe(select('todos'));
 	}
 
 	ngOnInit(): void {
-		for (let i = 0; i < 50; i++) {
-			this.todos.push(
-				{
-					id: 'id_' + i,
-					isDone: true,
-					value: 'test test'
-				}
-			);
-		}
 	}
 
 }
