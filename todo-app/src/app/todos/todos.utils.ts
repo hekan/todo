@@ -12,6 +12,11 @@ export const generateNewTodo = (text: string): TodoModel => {
 	};
 };
 
+export const isValidTodoText = (text: string): boolean => {
+	const parsed = text.trim();
+	return !!parsed;
+};
+
 const generateHash = () => {
 	return Date.now().toString();
 };

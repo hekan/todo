@@ -1,6 +1,7 @@
-import {Component, OnInit, ChangeDetectionStrategy, Input} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, Input, ViewChild, ElementRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {edit, remove} from '../../store/todos.actions';
+import {isValidTodoText} from '../../todos.utils';
 
 @Component({
 	selector: 't-todo-item',
@@ -12,8 +13,11 @@ export class TodoItemComponent implements OnInit {
 	@Input() id: string;
 	@Input() value: string;
 	@Input() isDone: boolean;
+	@ViewChild('editField') editField: ElementRef;
+	isEditMode: boolean;
 
 	constructor(private store: Store) {
+		this.isEditMode = false;
 	}
 
 	ngOnInit(): void {
@@ -30,6 +34,33 @@ export class TodoItemComponent implements OnInit {
 				}
 			}
 		));
+	}
+
+	toggleEditMode() {
+		this.isEditMode = !this.isEditMode;
+		if (this.isEditMode) {
+			window.setTimeout(() => {
+				this.editField.nativeElement.focus();
+			}, 10);
+		}
+	}
+
+	setDefaultMode() {
+		this.isEditMode = false;
+	}
+
+	edit(editedText: string) {
+		if (editedText !== this.value && isValidTodoText(editedText)) {
+			this.store.dispatch(edit(
+				{
+					todo: {
+						isDone: this.isDone,
+						value: editedText,
+						id: this.id
+					}
+				}
+			));
+		}
 	}
 
 	remove() {

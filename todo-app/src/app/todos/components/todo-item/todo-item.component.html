@@ -1,8 +1,18 @@
-<div class="todo-box">
+<div class="todo-box" [id]="'todo-box-' + id">
 	<div class="todo-box__item">
-		<mat-checkbox (change)="toggle()" [checked]="isDone" color="primary">{{value}}</mat-checkbox>
+		<input *ngIf="isEditMode; else defaultView" [value]="value" #editField
+			   (focusout)="setDefaultMode()"
+			   (keydown.enter)="edit(editField.value)"
+			   name="editTodo" matInput>
+		<ng-template #defaultView>
+			<mat-checkbox (change)="toggle()" [checked]="isDone" color="primary">{{value}}</mat-checkbox>
+		</ng-template>
+
 	</div>
 	<div class="todo-box__actions">
+		<button *ngIf="!isEditMode" (click)="toggleEditMode()" mat-icon-button color="primary">
+			<mat-icon>edit</mat-icon>
+		</button>
 		<button (click)="remove()" mat-icon-button color="warn">
 			<mat-icon>delete</mat-icon>
 		</button>

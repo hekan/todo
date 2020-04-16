@@ -6,4 +6,13 @@
 
 .todo-box__item {
 	padding-left: 1rem;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-width: 80%;
+}
+
+@media (max-width: 320px) {
+	.todo-box__item {
+		max-width: 40%;
+	}
 }

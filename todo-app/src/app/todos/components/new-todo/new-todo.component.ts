@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, ViewChild} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {add} from '../../store/todos.actions';
-import {generateNewTodo} from '../../todos.utils';
+import {generateNewTodo, isValidTodoText} from '../../todos.utils';
 import {TodoModel} from '../../todo.model';
 
 @Component({
@@ -17,8 +17,7 @@ export class NewTodoComponent implements OnInit {
 	}
 
 	get isValid(): boolean {
-		const parsed = this.newTodo.trim();
-		return !!parsed;
+		return isValidTodoText(this.newTodo);
 	}
 
 	ngOnInit(): void {
