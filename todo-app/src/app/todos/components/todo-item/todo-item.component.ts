@@ -50,7 +50,12 @@ export class TodoItemComponent implements OnInit {
 	}
 
 	edit(editedText: string) {
-		if (editedText !== this.value && isValidTodoText(editedText)) {
+		if (!isValidTodoText(editedText)) {
+			return;
+		}
+
+		const isTheSame = editedText !== this.value;
+		if (!isTheSame) {
 			this.store.dispatch(edit(
 				{
 					todo: {
@@ -60,6 +65,8 @@ export class TodoItemComponent implements OnInit {
 					}
 				}
 			));
+		} else {
+			this.setDefaultMode();
 		}
 	}
 
