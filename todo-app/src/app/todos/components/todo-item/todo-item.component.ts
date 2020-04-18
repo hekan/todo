@@ -56,7 +56,6 @@ export class TodoItemComponent implements OnInit {
 
 		const isTheSame = editedText === this.value;
 		if (!isTheSame) {
-			console.log('EDIT TODO', editedText);
 			this.store.dispatch(edit(
 				{
 					todo: {
