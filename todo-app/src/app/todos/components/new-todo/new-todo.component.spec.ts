@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NewTodoComponent} from './new-todo.component';
+import {Store} from '@ngrx/store';
 
 describe('NewTodoComponent', () => {
 	let component: NewTodoComponent;
@@ -8,7 +9,10 @@ describe('NewTodoComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [NewTodoComponent]
+			declarations: [NewTodoComponent],
+			providers: [
+				Store
+			]
 		})
 			.compileComponents();
 	}));

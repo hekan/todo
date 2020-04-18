@@ -13,7 +13,9 @@ export class TodosListComponent implements OnInit {
 	todos$: Observable<TodoModel []>;
 
 	constructor(private store: Store<{ todos: TodoModel [] }>) {
-		this.todos$ = store.pipe(select('todos'));
+		this.todos$ = store.pipe(
+			select('todos')
+		);
 	}
 
 	ngOnInit(): void {

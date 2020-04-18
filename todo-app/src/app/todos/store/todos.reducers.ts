@@ -8,7 +8,7 @@ const initialState: TodoModel [] = [
 
 const todosReducer = createReducer(initialState,
 	on(add, (state, {todo}) => {
-		return [...state, todo];
+		return [todo, ...state];
 	}),
 	on(edit, (state, {todo}) => {
 		const newState = [...state];
