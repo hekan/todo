@@ -17,7 +17,7 @@ export class TodoItemComponent implements OnInit {
 	isEditMode: boolean;
 
 	constructor(private store: Store) {
-		this.isEditMode = false;
+		this.setDefaultMode();
 	}
 
 	ngOnInit(): void {

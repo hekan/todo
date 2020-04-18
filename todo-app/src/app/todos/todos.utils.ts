@@ -17,6 +17,6 @@ export const isValidTodoText = (text: string): boolean => {
 	return !!parsed;
 };
 
-const generateHash = () => {
-	return Date.now().toString();
+export const generateHash = () => {
+	return Date.now().toString() + Math.floor(Math.random() * Math.floor(10000));
 };

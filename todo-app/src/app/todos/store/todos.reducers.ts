@@ -8,6 +8,7 @@ const initialState: TodoModel [] = [
 
 const todosReducer = createReducer(initialState,
 	on(add, (state, {todo}) => {
+		console.log('adding ', {todo});
 		return [todo, ...state];
 	}),
 	on(edit, (state, {todo}) => {
